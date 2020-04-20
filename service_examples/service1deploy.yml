@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service1
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: service1
+  template:
+    metadata:
+      labels:
+        run: service1
+    spec:
+      containers:
+        - image: crinehart/nginx:service1
+          name: service1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

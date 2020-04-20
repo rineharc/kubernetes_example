@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baseservice
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: baseservice
+  template:
+    metadata:
+      labels:
+        run: baseservice
+    spec:
+      containers:
+        - image: crinehart/nginx:base
+          name: baseservice
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
